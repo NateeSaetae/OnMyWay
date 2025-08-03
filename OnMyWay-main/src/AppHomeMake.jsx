@@ -9,10 +9,19 @@ import './App.css'
 
 function AppHomeMake() {
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     window.scrollTo(0, 0);
   },[])
+
+  const openTrip = () => {
+    if(token){
+      navigate('/trip');
+    }else{
+      navigate('/login');
+    }
+  }
 
   const features = [
     {
@@ -40,7 +49,6 @@ function AppHomeMake() {
   return (
     <div>
       <div className="text-center bg-gradient-to-r from-blue-100 via-white to-cyan-100 w-screen min-h-screen">
-
         {/*Hero Section*/}
         <section className="relative overflow-hidden py-20 px-4">
           <div className="max-w-7xl mx-auto">
@@ -52,42 +60,46 @@ function AppHomeMake() {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Create detailed travel itineraries, organize your destinations, and share your journey with friends. Turn your travel dreams into perfectly planned adventures.
+                Create detailed travel itineraries, organize your destinations,
+                and share your journey with friends. Turn your travel dreams
+                into perfectly planned adventures.
               </p>
               <div className="text-center my-5">
                 <button
-                  onClick={() => navigate("/trip")}
+                  onClick={() => openTrip()}
                   className="text-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full px-8 py-4 shadow-lg hover:-translate-y-1.5 duration-200 hover:to-cyan-500 hover:from-blue-600 hover:shadow-xl transform transition-all cursor-pointer"
-                  >
-                    Start Planning Now
+                >
+                  Start Planning Now
                 </button>
               </div>
               <div className="mt-20">
                 <div className="text-center">
                   <h1 className="text-4xl font-bold text-gray-900">
-                    Make Planning Your Trip  
-                    <span className="block mt-2">
-                      Fun And Easy.
-                    </span>
+                    Make Planning Your Trip
+                    <span className="block mt-2">Fun And Easy.</span>
                   </h1>
                   <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed mt-5">
-                    Plan your trip. Choose your destination, set your dates, save your important stuff, and share it with your special someone
+                    Plan your trip. Choose your destination, set your dates,
+                    save your important stuff, and share it with your special
+                    someone
                   </p>
                 </div>
                 <div className="mt-20 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {features.map((features , index) => (
-                    <div key={index}
-                      className="bg-gray-50 p-7 rounded-2xl shadow-lg hover:-translate-y-1.5 hover:shadow-xl duration-200">
+                  {features.map((features, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-50 p-7 rounded-2xl shadow-lg hover:-translate-y-1.5 hover:shadow-xl duration-200"
+                    >
                       <div className="flex items-center">
                         <div className="bg-gradient-to-r from-blue-500 to-cyan-500 p-3 rounded-xl text-white">
                           <features.icon></features.icon>
-                        </div >
+                        </div>
                         <h1 className="pl-3 text-xl font-semibold text-gray-800">
                           {features.title}
                         </h1>
                       </div>
                       <p className="text-gray-600 leading-relaxed mt-5 text-left">
-                          {features.description}
+                        {features.description}
                       </p>
                     </div>
                   ))}
@@ -96,11 +108,10 @@ function AppHomeMake() {
             </div>
           </div>
         </section>
-
       </div>
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default AppHomeMake;

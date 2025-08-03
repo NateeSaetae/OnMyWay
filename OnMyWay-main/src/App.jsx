@@ -1,29 +1,33 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Plane , Facebook , CircleUserRound , Github , MapPin , Calendar , Users , Share2} from 'lucide-react';
-import AppHomeMake from './AppHomeMake';
-import Navbar from './component/Navbar';
-import Trip from './component/page/Trip';
-import About from './component/page/about';
-import { RecoilRoot } from 'recoil'
-import './App.css'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AppRouter from "./component/page/AppRouter";
+import "./App.css";
 
 function App() {
-
   return (
     <div>
-      <RecoilRoot>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<AppHomeMake />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/trip" element={<Trip src="./image/Trip_2.png" alt="Beach" className="w-screen h-100 object-cover"/>} />
-          </Routes>
-        </Router>
-      </RecoilRoot>
+      <Router>
+        <AppRouter />
+      </Router>
+      <ToastContainer
+        position="top-right" // ตำแหน่งแสดง
+        autoClose={3000} // ปิดเองหลัง 3 วินาที
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
