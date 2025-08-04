@@ -108,7 +108,7 @@ function LoginPage() {
     return (
       <div>
         <div className="min-h-screen bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center p-4">
-          <div className="w-200 h-100 flex justify-start items-center">
+          <div className="w-200 h-100 md:flex justify-start items-center hidden">
             <div className="block">
               <div className="flex justify-center items-center">
                 <Plane className="size-30 bg-white p-4 rounded-3xl shadow-2xs text-blue-500" />

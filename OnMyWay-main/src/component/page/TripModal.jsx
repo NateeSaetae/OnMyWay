@@ -69,8 +69,8 @@ export const TripModal = ({ isOpen, onClose, edit}) => {
 
     if (!formData.tripName.trim()) newErrors.tripName = "Trip name is required";
     if (place.length < 1) newErrors.placeName = "Place name is required";
-    if (!formData.description.trim())
-      newErrors.description = "Description is required";
+      if (!formData.description.trim())
+        newErrors.description = "Description is required";
     if (formData.numberOfPeople < 1)
       newErrors.numberOfPeople = "Number of people must be at least 1";
     if (formData.budget < 0) newErrors.budget = "Budget cannot be negative";
@@ -135,57 +135,6 @@ export const TripModal = ({ isOpen, onClose, edit}) => {
       }
       onClose();
     }
-  };
-
-  //test
-  const testHandleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const token = localStorage.getItem('token');
-      const userId = localStorage.getItem('userId');
-
-      let resBody;
-      if (!oneDay) {
-        resBody = {
-          tripName: "test",
-          description: "test",
-          numberOfPeople: 2,
-          budget: 3000,
-          startDate: '2025-07-22',
-          endDate: '2025-07-24',
-          place: place,
-          userId:userId
-          //coordinates: formData.coordinates,
-        };
-      } else {
-        resBody = {
-          tripName: "test",
-          description: "test",
-          numberOfPeople: 2,
-          budget: 3000,
-          startDate: "2025-07-22",
-          place: place,
-          endDate: "false",
-          userId: userId,
-          //coordinates: formData.coordinates,
-        };
-      }
-      const res = await axios.post(
-        "http://localhost:3000/api/trips",resBody,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (res.status === 201) {
-        console.log("check your response server.", res.data);
-        setTripAtoms((prev) => [...prev, res.data]);
-      }
-    } catch (e) {
-      console.log("error log", e);
-    }
-    onClose();
   };
 
   const handleInputChange = (field, value) => {
@@ -577,13 +526,6 @@ export const TripModal = ({ isOpen, onClose, edit}) => {
                 className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-lg font-medium hover:from-blue-600 hover:to-cyan-500 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer"
               >
                 {edit ? "Update Trip" : "Create Trip"}
-              </button>
-              <button
-                type="submit"
-                onClick={testHandleSubmit}
-                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-lg font-medium hover:from-blue-600 hover:to-cyan-500 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer"
-              >
-                Test
               </button>
             </div>
           </form>

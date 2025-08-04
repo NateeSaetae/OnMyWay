@@ -53,13 +53,13 @@ function AppHomeMake() {
         <section className="relative overflow-hidden py-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="tect-center justify-center">
-              <h1 className="md:text-7xl font-bold text-gray-900 mb-6">
+              <h1 className="md:text-7xl font-bold text-gray-900 md:mb-6 text-4xl">
                 Plan Your Trip
                 <span className="block bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent h-22">
                   OnMyWay
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="md:text-xl text-md text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Create detailed travel itineraries, organize your destinations,
                 and share your journey with friends. Turn your travel dreams
                 into perfectly planned adventures.
@@ -67,18 +67,18 @@ function AppHomeMake() {
               <div className="text-center my-5">
                 <button
                   onClick={() => openTrip()}
-                  className="text-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full px-8 py-4 shadow-lg hover:-translate-y-1.5 duration-200 hover:to-cyan-500 hover:from-blue-600 hover:shadow-xl transform transition-all cursor-pointer"
+                  className="md:text-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full md:px-8 md:py-4 px-5 py-3 shadow-lg hover:-translate-y-1.5 duration-200 hover:to-cyan-500 hover:from-blue-600 hover:shadow-xl transform transition-all cursor-pointer text-md"
                 >
                   Start Planning Now
                 </button>
               </div>
-              <div className="mt-20">
+              <div className="md:mt-20 mt-10">
                 <div className="text-center">
-                  <h1 className="text-4xl font-bold text-gray-900">
+                  <h1 className="md:text-4xl text-2xl font-bold text-gray-900">
                     Make Planning Your Trip
                     <span className="block mt-2">Fun And Easy.</span>
                   </h1>
-                  <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed mt-5">
+                  <p className="md:text-xl text-md text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed mt-5">
                     Plan your trip. Choose your destination, set your dates,
                     save your important stuff, and share it with your special
                     someone

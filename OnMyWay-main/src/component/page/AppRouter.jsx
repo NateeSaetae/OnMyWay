@@ -26,7 +26,7 @@ function AppRouter() {
             <Trip
               src="./image/Trip_2.png"
               alt="Beach"
-              className="w-screen h-100 object-cover"
+              className="w-screen md:h-100 h-60 object-cover"
             />
           }
         />

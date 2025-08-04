@@ -124,7 +124,9 @@ function Trip({src , alt, className=""}) {
     console.log("testDeit", editTrips);
 
     const fetchTrip = async() => {
-        try {
+        const token = localStorage.getItem('token');
+        if(token){
+          try {
           const token = localStorage.getItem('token');
           //const userId = parseInt(localStorage.getItem('userId'));
           const res = await axios.get("http://localhost:3000/api/trips", {
@@ -136,6 +138,7 @@ function Trip({src , alt, className=""}) {
             //setPlace(res.data.place);
         }catch(e){
             console.error("Error fetching trips:", error);
+        }
         }
     }
 
@@ -166,7 +169,7 @@ function Trip({src , alt, className=""}) {
     
     return (
       <div>
-        <div className="text-center bg-gradient-to-r from-blue-100 via-white to-cyan-100 w-screen min-h-screen">
+        <div className="text-center bg-gradient-to-r from-blue-100 via-white to-cyan-100 w-screen h-screen">
           <div className="relative flex justify-center items-center">
             <img
               src={src}
@@ -175,7 +178,7 @@ function Trip({src , alt, className=""}) {
               ref={imgRef}
             />
             <div
-              className={`absolute text-left text-8xl font-bold px-8 py-6 rounded-xl text-white flex text-shadow-lg/30 ${anime_trip}`}
+              className={`absolute text-left md:text-8xl text-4xl font-bold px-20 py-6 rounded-xl text-white flex text-shadow-lg/30 ${anime_trip}`}
               ref={fontRef}
             >
               <h1 className="text-black">Your Trip</h1>
@@ -186,11 +189,11 @@ function Trip({src , alt, className=""}) {
               className={`absolute w-175 h-15 flex items-center justify-between top-92 ${anime_trip}`}
               ref={trip_Bar}
             >
-              <div className="w-100 h-15 flex items-center relative">
+              <div className="w-100 h-15 md:flex hidden items-center relative">
                 <input
                   type="text"
                   placeholder="Search Trip"
-                  className="bg-gray-200 rounded-full px-6 py-3 w-100 focus:outline-none"
+                  className="bg-gray-200 rounded-full px-6 py-3 md:w-100 focus:outline-none"
                   value={searchTrip}
                   onChange={(e) => setSearchTrip(e.target.value)}
                 />
@@ -198,7 +201,7 @@ function Trip({src , alt, className=""}) {
                   <Search className="text-white" />
                 </button>
               </div>
-              <div className="w-70 h-15 flex items-center">
+              <div className="w-70 h-15 md:flex hidden items-center">
                 <button
                   className="flex text-lg font-semibold bg-gradient-to-r from-blue-500 to-cyan-400 text-white rounded-full px-6 py-3 shadow-lg hover:-translate-y-1.5 
                             duration-200 hover:to-cyan-500 hover:from-blue-600 hover:shadow-xl transform transition-all cursor-pointer"
@@ -210,7 +213,7 @@ function Trip({src , alt, className=""}) {
             </div>
           </div>
           {trip.length > 0 ? (
-            <div className="w-screen h-50 bg-white/80 flex justify-center gap-25 items-center mt-9">
+            <div className="w-screen bg-white/80 flex justify-center gap-25 items-center mt-9">
               <div className="w-100 h-30 bg-blue-400 rounded-xl flex justify-center items-center gap-2 shadow-xl">
                 <div className="w-18 h-18 bg-white flex justify-center items-center rounded-xl">
                   <Calendar className="w-12 h-12 text-blue-400" />
@@ -274,7 +277,7 @@ function Trip({src , alt, className=""}) {
               </h1>
             </div>
           ) : (
-            <div className="w-screen grid grid-cols-3 gap-15 mt-5 ml-10 pb-15">
+            <div className="w-screen grid md:grid-cols-3 grid-cols-1 gap-15 mt-5 ml-10 pb-15">
               {filteredTrips.map((trips, index) => (
                 <div
                   key={index}
